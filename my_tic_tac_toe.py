@@ -125,7 +125,13 @@ def check_move(player, game_board):
 
 # Prints the game board
 def show_tic_tac_toe(game_board):
-    return 1
+    print(' ' + game_board['slot1'] + ' | ' + game_board['slot2'] + ' ' + '| ' + game_board['slot3'])
+    print('-----------')
+    print(' ' + game_board['slot4'] + ' | ' + game_board['slot5'] + ' ' + '| ' + game_board['slot6'])
+    print('-----------')
+    print(' ' + game_board['slot7'] + ' | ' + game_board['slot8'] + ' ' + '| ' + game_board['slot9'])
+
+
 
 if __name__ == "__main__":
     tic_tac_toe()
