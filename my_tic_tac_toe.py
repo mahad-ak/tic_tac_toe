@@ -17,16 +17,36 @@ def tic_tac_toe():
     # This counts the number of successful turns.
     turns_completed=0
 
-            
+    for i in range(total_turns):
+        # Prints the game board so the available and filled spaces are visible to each player at each turn
+        show_tic_tac_toe(game_board)
+
+        # Prompts the player for input to add their symbol on the game board
+        print("\n\nIt is player " + player + "'s turn. Which slot would you like to insert " + player + " at?")
+        
+        check_move(player, game_board)
+        turns_completed=turns_completed+1       
 
 
 # This function checks if a player's move passed in as input is a legal move and executes it, otherwise prints an error message and re-prompts the user.
 def check_move(player, game_board):
-    return 2
+        position = input()
+        print("")
+        
+        # Adds the player's symbol to the inputted position if there is no other symbol present on that position
+        if ((game_board[str("slot"+position)] == position) and (str(game_board[str("slot"+position)]) != 'X' or str(game_board[str("slot"+position)]) != 'O')):
+            game_board["slot" + position] = player
+        else:
+            # Prints an error message and prompts the user to insert their input again
+            show_tic_tac_toe(game_board)
+            print("\nSorry, this slot is already filled. Which other slot would you like to insert " + player + " at?")
+            check_move(player, game_board)
+            return
+
 
 # Prints the game board
 def show_tic_tac_toe(game_board):
-    return 1
+    return 1;
 
 if __name__ == "__main__":
     tic_tac_toe()
