@@ -27,7 +27,67 @@ def tic_tac_toe():
         check_move(player, game_board)
         turns_completed=turns_completed+1
 
-     
+        # Checks if any player has won (through any one of the various ways). 
+        if turns_completed >= 4:
+            # Checks if the symbols match across the top
+            if game_board['slot1'] == game_board['slot2'] == game_board['slot3']:
+                show_tic_tac_toe(game_board)
+                print("\nGame has concluded.\nPlayer " + player + " won.\n")                
+                break
+
+            # Checks if the symbols match across the middle
+            elif game_board['slot4'] == game_board['slot5'] == game_board['slot6']:
+                show_tic_tac_toe(game_board)
+                print("\nGame has concluded.\nPlayer " + player + " won.\n") 
+                break
+
+            # Checks if the symbols match across the bottom
+            elif game_board['slot7'] == game_board['slot8'] == game_board['slot9']:
+                show_tic_tac_toe(game_board)
+                print("\nGame has concluded.\nPlayer " + player + " won.\n") 
+                break
+
+            # Checks if the symbols match down the left side
+            elif game_board['slot1'] == game_board['slot4'] == game_board['slot7']: 
+                show_tic_tac_toe(game_board)
+                print("\nGame has concluded.\nPlayer " + player + " won.\n") 
+                break
+
+            # Checks if the symbols match down the middle
+            elif game_board['slot2'] == game_board['slot5'] == game_board['slot8']:
+                show_tic_tac_toe(game_board)
+                print("\nGame has concluded.\nPlayer " + player + " won.\n") 
+                break
+
+            # Checks if the symbols match down the right side
+            elif game_board['slot3'] == game_board['slot6'] == game_board['slot9']:
+                show_tic_tac_toe(game_board)
+                print("\nGame has concluded.\nPlayer " + player + " won.\n") 
+                break 
+
+            # Checks if the symbols match diagonally
+            elif game_board['slot1'] == game_board['slot5'] == game_board['slot9']:
+                show_tic_tac_toe(game_board)
+                print("\nGame has concluded.\nPlayer " + player + " won.\n") 
+                break
+
+            # Checks if the symbols match diagonally
+            elif game_board['slot3'] == game_board['slot5'] == game_board['slot7']:
+                show_tic_tac_toe(game_board)
+                print("\nGame has concluded.\nPlayer " + player + " won.\n") 
+                break 
+
+        # Checks if the board is full and there are no winners, then it announces a tie
+        if turns_completed == 9:
+            show_tic_tac_toe(game_board)
+            print("\nGame has concluded.\nWe have a tie!\n")
+            break
+
+        # Changes the player after each turn
+        if player =='X':
+            player = 'O'
+        else:
+            player = 'X'        
 
 
 # This function checks if a player's move passed in as input is a legal move and executes it, otherwise prints an error message and re-prompts the user.
