@@ -25,13 +25,32 @@ def tic_tac_toe():
         print("\n\nIt is player " + player + "'s turn. Which slot would you like to insert " + player + " at?")
         
         check_move(player, game_board)
-        turns_completed=turns_completed+1       
+        turns_completed=turns_completed+1
+
+     
 
 
 # This function checks if a player's move passed in as input is a legal move and executes it, otherwise prints an error message and re-prompts the user.
 def check_move(player, game_board):
         position = input()
         print("")
+
+        # Checks if the input contains anything other than numbers
+        if not position.isnumeric():
+            show_tic_tac_toe(game_board)
+            print("\nThis is not a legal move. Please try again.")
+            check_move(player, game_board)
+            return
+
+        int_position = int(position)      
+        legal_moves = range(1, 10, 1)
+
+        # Prints to inform the user if the position they inputted is not legal, meaning it is not any number between 1 and 9.
+        if int_position not in legal_moves:
+            show_tic_tac_toe(game_board)
+            print("\nThis is not a legal move. Please try again.")
+            check_move(player, game_board)
+            return
         
         # Adds the player's symbol to the inputted position if there is no other symbol present on that position
         if ((game_board[str("slot"+position)] == position) and (str(game_board[str("slot"+position)]) != 'X' or str(game_board[str("slot"+position)]) != 'O')):
@@ -46,7 +65,7 @@ def check_move(player, game_board):
 
 # Prints the game board
 def show_tic_tac_toe(game_board):
-    return 1;
+    return 1
 
 if __name__ == "__main__":
     tic_tac_toe()
